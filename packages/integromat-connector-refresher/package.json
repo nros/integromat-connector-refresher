@@ -1,0 +1,34 @@
+{
+  "name": "@firecoder/integromat-connector-refresher",
+  "description": "Refreshes connectors in your integromat account via WebInterface by using headless browser.",
+  "version": "0.1.0",
+  "keywords": [],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run lint && npm run build:lib",
+    "build:lib": "node ../../build-tools/tsc.js",
+    "lint": "node ../../node_modules/.bin/eslint src --ext .ts",
+    "lint:fix": "node ../../node_modules/.bin/eslint src --ext .ts --fix",
+    "start:dev": "node ../../node_modules/.bin/ts-node --project tsconfig.node.json src/index.ts",
+    "test": "",
+    "test:unit": ""
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.30",
+    "@types/jquery": "^3.5.9",
+    "cheerio": "^1.0.0-rc.10"
+  },
+  "dependencies": {
+    "@botmation/core": "^1.4.0",
+    "winston": "^3.3.3"
+  },
+  "engine": {
+    "node": ">=10.0.0"
+  }
+}
