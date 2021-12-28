@@ -133,7 +133,7 @@ function refresh(connectorId: string, username: string, password: string): Promi
     program
         .requiredOption("-u, --username <username>", "The Integromat username to use for login.")
         .requiredOption("-p, --password <password>", "The Integromat password of the user to use for login.")
-        .requiredOption("-c, --connector-id <id>", "The ID of the connector to refresh.")
+        .requiredOption("-c, --connection-id <id>", "The ID of the connector to refresh.")
     ;
     program.parse(process.argv);
 
