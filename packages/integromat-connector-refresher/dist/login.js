@@ -19,7 +19,7 @@ async function saveLoginCookies(fileName, username, password) {
         const pages = await browser.pages();
         page = pages.length === 0 ? await browser.newPage() : pages[0];
         // create the cookie file if missing
-        await fs.access(fileName).catch(() => fs.writeFile("{}", fileName));
+        await fs.access(fileName).catch(() => fs.writeFile(fileName, "{}"));
         await (0, core_1.chain)((0, refresh_1.login)(username, password), (page) => page.cookies()
             .then((cookies) => fs.writeFile(fileName, JSON.stringify(cookies, undefined, 4))))(page);
         await page.close();
