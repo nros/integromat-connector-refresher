@@ -4,6 +4,7 @@ import * as fs from "fs/promises";
 import * as http from "http";
 import * as https from "https";
 import * as path from "path";
+import { Command } from "commander";
 
 import { saveLoginCookies } from "./login";
 
@@ -127,4 +128,15 @@ function refresh(connectorId: string, username: string, password: string): Promi
         .catch(console.error);
 }
 
-((connectorId: string, username: string, password: string) => refresh(connectorId, username, password))("2912801", "", "");
+(async () => {
+    const program = new Command();
+    program
+        .requiredOption("-u, --username <username>", "The Integromat username to use for login.")
+        .requiredOption("-p, --password <password>", "The Integromat password of the user to use for login.")
+        .requiredOption("-c, --connector-id <id>", "The ID of the connector to refresh.")
+    ;
+    program.parse(process.argv);
+
+    const options = program.opts();
+    return await refresh(options.connectorId, options.username, options.password);
+})();
